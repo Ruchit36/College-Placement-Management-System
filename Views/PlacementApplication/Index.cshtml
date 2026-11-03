@@ -1,0 +1,43 @@
+@model IEnumerable<CollegePlacementManagementSystem.Models.PlacementApplication>
+
+@{
+    ViewData["Title"] = "Placement Applications";
+}
+
+<h1>Placement Applications</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Application</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+            <th>Company Name</th>
+            <th>Job Role</th>
+            <th>Application Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var application in Model)
+        {
+            <tr>
+                <td>@application.StudentName</td>
+                <td>@application.CompanyName</td>
+                <td>@application.JobRole</td>
+                <td>@application.ApplicationDate.ToString("dd-MM-yyyy")</td>
+                <td>@application.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@application.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                    <a asp-action="Delete" asp-route-id="@application.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

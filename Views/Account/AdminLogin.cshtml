@@ -1,0 +1,190 @@
+@model CollegePlacementManagementSystem.Models.AdminLoginViewModel
+
+@{
+    ViewData["Title"] = "Admin Login";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/admin-login.css" asp-append-version="true" />
+
+<div class="container">
+
+    <div class="admin-login-wrapper">
+
+        <!-- LEFT PANEL: LOGIN FORM -->
+
+        <div class="admin-login-left">
+
+            <div class="admin-brand">
+                <i class="bi bi-mortarboard-fill"></i>
+                <span>College Placement Management System</span>
+            </div>
+
+            <h2>Admin <span>Login</span></h2>
+
+            <p class="subtitle">
+                Sign in to manage the placement system.
+            </p>
+
+            <form asp-controller="Account" asp-action="AdminLogin" asp-route-returnUrl="@ViewBag.ReturnUrl"
+                  method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3">
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Username" class="form-label">
+                        <i class="bi bi-person me-2"></i>Username
+                    </label>
+
+                    <input asp-for="Username" class="form-control" placeholder="Enter admin username" />
+
+                    <span asp-validation-for="Username" class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Password" class="form-label">
+                        <i class="bi bi-lock me-2"></i>Password
+                    </label>
+
+                    <div class="password-wrapper">
+                        <input asp-for="Password" type="password" class="form-control password-input" id="adminPassword"
+                               placeholder="Enter your password" />
+
+                        <button type="button" class="password-toggle" onclick="togglePassword('adminPassword', this)"
+                                aria-label="Show password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+
+                    <span asp-validation-for="Password" class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input asp-for="RememberMe" class="form-check-input" />
+
+                    <label asp-for="RememberMe" class="form-check-label">
+                        Remember me
+                    </label>
+
+                </div>
+
+                <button type="submit" class="btn admin-login-btn w-100">
+
+                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                    Login to Dashboard
+
+                </button>
+
+            </form>
+
+            <div class="mt-4">
+
+                <a asp-controller="Account" asp-action="Login" class="admin-back-link">
+
+                    <i class="bi bi-arrow-left me-1"></i>
+                    Back to Portal Selection
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL: ADMIN ILLUSTRATION -->
+
+        <div class="admin-login-right">
+
+            <div class="admin-illustration">
+
+                <div class="admin-dashboard-art">
+                    <i class="bi bi-people-fill"></i>
+                    <i class="bi bi-building"></i>
+                    <i class="bi bi-calendar-check-fill"></i>
+                    <i class="bi bi-bar-chart-fill"></i>
+                </div>
+
+                <div class="admin-person-art">
+
+                    <div class="admin-person-head">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div class="admin-person-body">
+                        <i class="bi bi-laptop-fill"></i>
+                    </div>
+
+                </div>
+
+                <div class="admin-security-badge">
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+
+            </div>
+
+            <h2>Welcome Back, Admin!</h2>
+
+            <p>
+                Manage student records, company information,
+                placement drives and applications from one
+                centralized dashboard.
+            </p>
+
+            <div class="admin-features">
+
+                <div class="admin-feature">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Student<br />Management</span>
+                </div>
+
+                <div class="admin-feature">
+                    <i class="bi bi-building"></i>
+                    <span>Company &<br />Drives</span>
+                </div>
+
+                <div class="admin-feature">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>Placement<br />Applications</span>
+                </div>
+
+            </div>
+
+            <div class="admin-security-text">
+                <i class="bi bi-shield-check me-2"></i>
+                Secure Administration Portal
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function togglePassword(inputId, button) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = button.querySelector("i");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+                button.setAttribute("aria-label", "Hide password");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+                button.setAttribute("aria-label", "Show password");
+            }
+        }
+    </script>
+}

@@ -1,0 +1,100 @@
+@{
+    ViewData["Title"] = "API Integration";
+}
+
+<div class="container mt-4">
+    <h2>Student API Integration</h2>
+    <p class="text-muted">
+        Retrieve student records using ASP.NET Core Web API.
+    </p>
+
+    <button id="loadStudents" class="btn btn-primary mb-3">
+        Load Students
+    </button>
+
+    <div id="message" class="mb-3"></div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>CGPA</th>
+                    <th>Graduation Year</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTableBody">
+                <tr>
+                    <td colspan="6" class="text-center">
+                        Click Load Students to retrieve records.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("loadStudents").addEventListener("click", async function () {
+
+            const tableBody = document.getElementById("studentTableBody");
+            const message = document.getElementById("message");
+
+            try {
+                const response = await fetch("/api/StudentsApi");
+
+                if (!response.ok) {
+                    throw new Error("Unable to retrieve student records.");
+                }
+
+                const students = await response.json();
+
+                tableBody.innerHTML = "";
+
+                if (students.length === 0) {
+                    tableBody.innerHTML = `
+                                    <tr>
+                                        <td colspan="6" class="text-center">
+                                            No student records found.
+                                        </td>
+                                    </tr>`;
+                    message.innerHTML = "";
+                    return;
+                }
+
+                students.forEach(student => {
+                    const row = document.createElement("tr");
+
+                    [
+                        student.id,
+                        student.fullName,
+                        student.email,
+                        student.course,
+                        student.cgpa,
+                        student.graduationYear
+                    ].forEach(value => {
+                        const cell = document.createElement("td");
+                        cell.textContent = value ?? "";
+                        row.appendChild(cell);
+                    });
+
+                    tableBody.appendChild(row);
+                });
+
+                message.innerHTML =
+                    `<span class="text-success">
+                                    ${students.length} student record(s) loaded successfully.
+                                </span>`;
+            }
+            catch (error) {
+                message.innerHTML =
+                    `<span class="text-danger">${error.message}</span>`;
+            }
+        });
+    </script>
+}

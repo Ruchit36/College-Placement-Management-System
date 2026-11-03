@@ -1,0 +1,200 @@
+@model CollegePlacementManagementSystem.Models.AdminLoginViewModel
+
+@{
+    ViewData["Title"] = "Student Login";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/student-login.css" asp-append-version="true" />
+
+<div class="container">
+
+    <div class="student-login-wrapper">
+
+        <!-- LEFT PANEL: LOGIN FORM -->
+
+        <div class="student-login-left">
+
+            <div class="student-brand">
+                <i class="bi bi-mortarboard-fill"></i>
+                <span>College Placement Management System</span>
+            </div>
+
+            <h2>Student <span>Login</span></h2>
+
+            <p class="subtitle">
+                Sign in to explore your placement opportunities.
+            </p>
+
+            <form asp-controller="Account" asp-action="StudentLogin" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3">
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Username" class="form-label">
+                        <i class="bi bi-envelope me-2"></i>Registered Email
+                    </label>
+
+                    <input asp-for="Username" type="email" class="form-control"
+                           placeholder="Enter your registered email" />
+
+                    <span asp-validation-for="Username" class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label asp-for="Password" class="form-label">
+                        <i class="bi bi-lock me-2"></i>Password
+                    </label>
+
+                    <div class="password-wrapper">
+                        <input asp-for="Password" type="password" class="form-control password-input"
+                               id="studentPassword" placeholder="Enter your password" />
+
+                        <button type="button" class="password-toggle" onclick="togglePassword('studentPassword', this)"
+                                aria-label="Show password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+
+                    <span asp-validation-for="Password" class="text-danger">
+                    </span>
+
+                </div>
+
+                <div class="form-check mb-4">
+
+                    <input asp-for="RememberMe" class="form-check-input" />
+
+                    <label asp-for="RememberMe" class="form-check-label">
+                        Remember me
+                    </label>
+
+                </div>
+
+                <button type="submit" class="btn student-login-btn w-100">
+
+                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                    Login to Student Portal
+
+                </button>
+
+            </form>
+
+            <div class="mt-4">
+
+                <span class="text-light small">New student?</span>
+
+                <a asp-controller="Account" asp-action="Register" class="student-register-link fw-semibold ms-1">
+                    Create Account
+                </a>
+
+            </div>
+
+            <div class="mt-3">
+
+                <a asp-controller="Account" asp-action="Login" class="student-back-link">
+
+                    <i class="bi bi-arrow-left me-1"></i>
+                    Back to Portal Selection
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL: STUDENT ILLUSTRATION -->
+
+        <div class="student-login-right">
+
+            <div class="student-illustration">
+
+                <div class="student-study-art">
+                    <i class="bi bi-book-half"></i>
+                    <i class="bi bi-laptop-fill"></i>
+                    <i class="bi bi-mortarboard-fill"></i>
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+
+                <div class="student-person-art">
+
+                    <div class="student-person-head">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+
+                    <div class="student-person-body">
+                        <i class="bi bi-laptop-fill"></i>
+                    </div>
+
+                </div>
+
+                <div class="student-cap">
+                    <i class="bi bi-mortarboard-fill"></i>
+                </div>
+
+            </div>
+
+            <h2>Welcome, Student!</h2>
+
+            <p>
+                Your journey towards a successful career starts here.
+                Explore placement opportunities and take the next
+                step towards your professional future.
+            </p>
+
+            <div class="student-features">
+
+                <div class="student-feature">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    <span>View<br />Profile</span>
+                </div>
+
+                <div class="student-feature">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>Explore<br />Placements</span>
+                </div>
+
+                <div class="student-feature">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <span>Career<br />Opportunities</span>
+                </div>
+
+            </div>
+
+            <div class="student-security-text">
+                <i class="bi bi-shield-check me-2"></i>
+                Your Career, Your Future
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function togglePassword(inputId, button) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = button.querySelector("i");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.replace("bi-eye", "bi-eye-slash");
+                button.setAttribute("aria-label", "Hide password");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.replace("bi-eye-slash", "bi-eye");
+                button.setAttribute("aria-label", "Show password");
+            }
+        }
+    </script>
+}

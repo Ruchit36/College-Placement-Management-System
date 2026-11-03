@@ -1,0 +1,321 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* =========================================
+   COLLEGE PLACEMENT MANAGEMENT SYSTEM
+   Theme: Navy Blue + Teal + Warm Amber
+========================================= */
+
+:root {
+  --navy: #123B5D;
+  --teal: #0F766E;
+  --amber: #F4B942;
+  --background: #F5F8FC;
+  --white: #FFFFFF;
+  --text-dark: #1F2937;
+  --text-muted: #526274;
+  --border: #DCE5EF;
+}
+
+/* GENERAL */
+
+body {
+  background-color: var(--background);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  padding-top: 25px;
+  padding-bottom: 35px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--navy);
+}
+
+/* NAVIGATION BAR */
+
+.navbar {
+  background-color: var(--navy) !important;
+  padding: 14px 0;
+  box-shadow: 0 3px 12px rgba(18, 59, 93, 0.15);
+}
+
+.navbar-brand {
+  color: var(--white) !important;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.navbar .nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  margin: 0 7px;
+  transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--amber) !important;
+}
+
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* PAGE HEADINGS */
+
+.display-4 {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+hr {
+  border-color: var(--border);
+  opacity: 1;
+  margin: 30px 0;
+}
+
+/* DASHBOARD AND CARDS */
+
+.card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(18, 59, 93, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(18, 59, 93, 0.12);
+}
+
+.card h5 {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* BUTTONS */
+
+.btn {
+  border-radius: 7px;
+  padding: 9px 18px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  border-color: var(--teal);
+}
+
+.btn-primary:hover {
+  background-color: #0B5F59;
+  border-color: #0B5F59;
+}
+
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-danger {
+  background-color: #DC3545;
+  border-color: #DC3545;
+}
+
+.btn-warning {
+  background-color: var(--amber);
+  border-color: var(--amber);
+  color: var(--navy);
+}
+
+/* TABLES */
+
+.table {
+  background-color: var(--white);
+  border-color: var(--border);
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 14px;
+  border-color: #315878;
+  white-space: nowrap;
+}
+
+.table tbody td {
+  padding: 12px;
+  color: var(--text-dark);
+}
+
+.table tbody tr:hover>* {
+  background-color: #EDF5F8;
+}
+
+/* FORMS */
+
+.form-control,
+.form-select {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 10px 12px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 0.2rem rgba(15, 118, 110, 0.15);
+}
+
+label,
+.form-label {
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+/* VALIDATION MESSAGES */
+
+.text-danger,
+.field-validation-error,
+.validation-summary-errors {
+  color: #DC3545 !important;
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: var(--navy);
+  color: var(--white);
+  padding: 16px;
+  margin-top: 35px;
+}
+
+footer a {
+  color: var(--amber);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 30px;
+  }
+
+  .card {
+    margin-bottom: 15px;
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .navbar .nav-link {
+    padding: 8px 12px;
+  }
+}
+
+/* FOOTER TEXT VISIBILITY FIX */
+
+footer,
+footer .text-muted,
+footer .container {
+  color: #FFFFFF !important;
+}
+
+footer a {
+  color: #F4B942 !important;
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: #FFFFFF !important;
+}
+
+/* Footer layout fix */
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Allow page content to occupy available space */
+body>.container {
+  flex: 1 0 auto;
+}
+
+/* Keep footer at the bottom without overlapping content */
+footer.footer {
+  position: static !important;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* Sticky Header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background-color: white;
+}

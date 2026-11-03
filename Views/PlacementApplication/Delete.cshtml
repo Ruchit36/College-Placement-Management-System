@@ -1,0 +1,25 @@
+@model CollegePlacementManagementSystem.Models.PlacementApplication
+
+@{
+    ViewData["Title"] = "Delete Placement Application";
+}
+
+<h1>Delete Placement Application</h1>
+
+<h3>Are you sure you want to delete this application?</h3>
+
+<div>
+    <p><strong>Student Name:</strong> @Model.StudentName</p>
+    <p><strong>Company Name:</strong> @Model.CompanyName</p>
+    <p><strong>Job Role:</strong> @Model.JobRole</p>
+    <p><strong>Application Date:</strong> @Model.ApplicationDate.ToString("dd-MM-yyyy")</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+</form>

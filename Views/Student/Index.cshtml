@@ -1,0 +1,41 @@
+@model IEnumerable<CollegePlacementManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Student Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Student</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>CGPA</th>
+            <th>Graduation Year</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.FullName</td>
+                <td>@student.Email</td>
+                <td>@student.Course</td>
+                <td>@student.CGPA</td>
+                <td>@student.GraduationYear</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@student.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

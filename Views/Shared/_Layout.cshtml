@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - CollegePlacementManagementSystem</title>
+
+    <script type="importmap"></script>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CollegePlacementManagementSystem.styles.css" asp-append-version="true" />
+
+</head>
+
+<body>
+
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+
+        var isPortalSelectionPage =
+            currentController == "Account" &&
+            currentAction == "Login";
+    }
+
+    @if (User.Identity != null &&
+         User.Identity.IsAuthenticated &&
+         !isPortalSelectionPage)
+    {
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark shadow-sm mb-4" style="background-color: #123B5D;">
+
+                <div class="container-fluid">
+
+                    <!-- Non-clickable Project Title -->
+                    <span class="navbar-brand fw-bold">
+                        College Placement Management System
+                    </span>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                            aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                        Dashboard
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Student" asp-action="Index">
+                                        Students
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Company" asp-action="Index">
+                                        Companies
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="PlacementDrive" asp-action="Index">
+                                        Placement Drives
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="PlacementApplication" asp-action="Index">
+                                        Applications
+                                    </a>
+                                </li>
+                            }
+
+                            @if (User.IsInRole("Student"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="StudentDashboard" asp-action="Index">
+                                        Dashboard
+                                    </a>
+                                </li>
+                            }
+
+                            @if (User.IsInRole("Admin") || User.IsInRole("Student"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="ApiIntegration" asp-action="Index">
+                                        API Integration
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Privacy">
+                                        Privacy
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <span class="text-white">
+                                Welcome, @User.Identity.Name
+                            </span>
+
+                            <form asp-controller="Account" asp-action="Logout" method="post">
+
+                                <button type="submit" class="btn btn-sm" style="background-color: #F4B942;
+                                    color: #123B5D;
+                                    font-weight: 600;">
+
+                                    Logout
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </nav>
+        </header>
+    }
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+    </div>
+
+    <footer class="border-top footer text-muted">
+
+        <div class="container">
+            &copy; 2026 - College Placement Management System
+        </div>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

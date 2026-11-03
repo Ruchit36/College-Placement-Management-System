@@ -1,0 +1,125 @@
+@{
+    ViewData["Title"] = "Choose Your Portal";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <div style="font-size: 55px; color: #0F766E;">
+            <i class="bi bi-mortarboard-fill"></i>
+        </div>
+
+        <h2 class="fw-bold mt-2" style="color: #123B5D;">
+            College Placement Management System
+        </h2>
+
+        <p class="text-muted">
+            Welcome! Please select your portal to continue.
+        </p>
+
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="row justify-content-center g-4">
+
+        <!-- Admin Portal -->
+
+        <div class="col-md-5">
+
+            <div class="card shadow-lg border-0 h-100 text-center" style="border-radius: 18px;">
+
+                <div class="card-body p-5">
+
+                    <div class="mb-4" style="font-size: 65px; color: #123B5D;">
+
+                        <i class="bi bi-person-badge-fill"></i>
+
+                    </div>
+
+                    <h3 class="fw-bold" style="color: #123B5D;">
+                        Admin Portal
+                    </h3>
+
+                    <p class="text-muted mt-3 mb-4">
+                        Manage students, companies, placement drives
+                        and placement applications.
+                    </p>
+
+                    <a asp-controller="Account" asp-action="AdminLogin" class="btn btn-primary w-100 py-2" style="background-color: #123B5D;
+                        border-color: #123B5D;">
+
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        Admin Login
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Student Portal -->
+
+        <div class="col-md-5">
+
+            <div class="card shadow-lg border-0 h-100 text-center" style="border-radius: 18px;">
+
+                <div class="card-body p-5">
+
+                    <div class="mb-4" style="font-size: 65px; color: #0F766E;">
+
+                        <i class="bi bi-mortarboard"></i>
+
+                    </div>
+
+                    <h3 class="fw-bold" style="color: #0F766E;">
+                        Student Portal
+                    </h3>
+
+                    <p class="text-muted mt-3 mb-4">
+                        View your profile and explore eligible
+                        placement opportunities.
+                    </p>
+
+                    <a asp-controller="Account" asp-action="StudentLogin" class="btn btn-primary w-100 py-2" style="background-color: #0F766E;
+                        border-color: #0F766E;">
+
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        Student Login
+
+                    </a>
+
+                    <a asp-controller="Account" asp-action="Register"
+                       class="d-inline-block mt-3 text-decoration-none fw-semibold" style="color: #0F766E;">
+
+                        New Student? Create Account
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5 text-muted">
+
+        <small>
+            College Placement Management System |
+            Secure Login Portal
+        </small>
+
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+@model IEnumerable<CollegePlacementManagementSystem.Models.Company>
+
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<h1>Company Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Company</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Industry</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var company in Model)
+        {
+            <tr>
+                <td>@company.CompanyName</td>
+                <td>@company.Industry</td>
+                <td>@company.Email</td>
+                <td>@company.Location</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@company.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@company.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

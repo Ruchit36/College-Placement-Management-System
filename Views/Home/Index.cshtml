@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4">College Placement Management System</h1>
+
+    <p class="lead mt-3">
+        Welcome to the College Placement Management System.
+    </p>
+
+    <p>
+        This system helps manage students, companies, placement drives,
+        and placement applications efficiently.
+    </p>
+</div>
+
+<hr />
+
+<div class="row mt-4 text-center">
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h5>Students</h5>
+            <p>Manage student records.</p>
+            <a asp-controller="Student" asp-action="Index" class="btn btn-primary">View Students</a>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h5>Companies</h5>
+            <p>Manage company details.</p>
+            <a asp-controller="Company" asp-action="Index" class="btn btn-primary">View Companies</a>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h5>Placement Drives</h5>
+            <p>Manage placement opportunities.</p>
+            <a asp-controller="PlacementDrive" asp-action="Index" class="btn btn-primary">View Drives</a>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow-sm p-3">
+            <h5>Applications</h5>
+            <p>Manage student applications.</p>
+            <a asp-controller="PlacementApplication" asp-action="Index" class="btn btn-primary">View Applications</a>
+        </div>
+    </div>
+
+</div>

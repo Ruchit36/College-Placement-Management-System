@@ -1,0 +1,41 @@
+@model IEnumerable<CollegePlacementManagementSystem.Models.PlacementDrive>
+
+@{
+    ViewData["Title"] = "Placement Drives";
+}
+
+<h1>Placement Drives</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Placement Drive</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Job Role</th>
+            <th>Minimum CGPA</th>
+            <th>Application Deadline</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var drive in Model)
+        {
+            <tr>
+                <td>@drive.CompanyName</td>
+                <td>@drive.JobRole</td>
+                <td>@drive.MinimumCGPA</td>
+                <td>@drive.ApplicationDeadline.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@drive.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                    <a asp-action="Delete" asp-route-id="@drive.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
